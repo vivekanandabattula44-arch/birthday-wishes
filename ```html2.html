@@ -1,0 +1,1255 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bestie 💖</title>
+
+<style>
+/* =========================================================
+   BASIC SETUP
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Poppins", Arial, sans-serif;
+    background: #090014;
+    color: white;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.slider {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.08);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s;
+
+    overflow: hidden;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* =========================================================
+   FIREWORK / FIREWALL BACKGROUND
+========================================================= */
+
+.fireworks {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 100%,
+        rgba(255, 0, 170, 0.20),
+        transparent 45%),
+        radial-gradient(circle at 20% 20%,
+        rgba(110, 40, 255, 0.20),
+        transparent 40%),
+        linear-gradient(135deg, #090014, #17002b, #05000c);
+}
+
+/* glowing vertical firewall lines */
+
+.firewall {
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: 120%;
+    background: linear-gradient(
+        to top,
+        transparent,
+        #ff1493,
+        #ff8ad8,
+        transparent
+    );
+    filter: blur(1px);
+    opacity: 0.35;
+    animation: firewallMove 3s infinite alternate;
+}
+
+.firewall:nth-child(1) { left: 5%; animation-delay: 0s; }
+.firewall:nth-child(2) { left: 12%; animation-delay: .5s; }
+.firewall:nth-child(3) { left: 20%; animation-delay: 1s; }
+.firewall:nth-child(4) { left: 30%; animation-delay: .3s; }
+.firewall:nth-child(5) { left: 40%; animation-delay: 1.2s; }
+.firewall:nth-child(6) { left: 50%; animation-delay: .7s; }
+.firewall:nth-child(7) { left: 60%; animation-delay: 1.5s; }
+.firewall:nth-child(8) { left: 70%; animation-delay: .4s; }
+.firewall:nth-child(9) { left: 80%; animation-delay: 1.1s; }
+.firewall:nth-child(10) { left: 90%; animation-delay: .2s; }
+
+@keyframes firewallMove {
+    from {
+        transform: scaleY(.7);
+        opacity: .15;
+    }
+
+    to {
+        transform: scaleY(1.1);
+        opacity: .5;
+    }
+}
+
+/* =========================================================
+   FIREWORK EXPLOSIONS
+========================================================= */
+
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+
+    animation: explode 2.8s infinite;
+}
+
+.fw1 {
+    top: 15%;
+    left: 15%;
+}
+
+.fw2 {
+    top: 20%;
+    right: 18%;
+    animation-delay: 1s;
+}
+
+.fw3 {
+    bottom: 20%;
+    left: 80%;
+    animation-delay: 1.8s;
+}
+
+@keyframes explode {
+    0% {
+        box-shadow:
+            0 0 0 #ff4da6,
+            0 0 0 #ffd166,
+            0 0 0 #7df9ff,
+            0 0 0 #c77dff;
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow:
+            70px 0 #ff4da6,
+            -70px 0 #ffd166,
+            0 70px #7df9ff,
+            0 -70px #c77dff,
+            50px 50px #fff,
+            -50px -50px #ff85c8,
+            50px -50px #ffd166,
+            -50px 50px #7df9ff;
+        opacity: 1;
+    }
+
+    100% {
+        box-shadow:
+            110px 0 transparent,
+            -110px 0 transparent,
+            0 110px transparent,
+            0 -110px transparent,
+            80px 80px transparent,
+            -80px -80px transparent,
+            80px -80px transparent,
+            -80px 80px transparent;
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   BALLOONS
+========================================================= */
+
+.balloon {
+    position: absolute;
+    width: 65px;
+    height: 80px;
+    border-radius: 50%;
+    bottom: -120px;
+    z-index: 3;
+
+    animation: balloonFloat 10s linear infinite;
+}
+
+.balloon::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 28px;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    transform: rotate(45deg);
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    width: 2px;
+    height: 100px;
+    background: rgba(255,255,255,.5);
+}
+
+.balloon.b1 {
+    left: 5%;
+    background: #ff4f81;
+}
+
+.balloon.b2 {
+    left: 20%;
+    background: #ffd166;
+    animation-delay: 2s;
+}
+
+.balloon.b3 {
+    right: 20%;
+    background: #64dfdf;
+    animation-delay: 4s;
+}
+
+.balloon.b4 {
+    right: 5%;
+    background: #b983ff;
+    animation-delay: 1s;
+}
+
+.balloon.b5 {
+    left: 48%;
+    background: #ff8fab;
+    animation-delay: 6s;
+}
+
+@keyframes balloonFloat {
+    0% {
+        transform: translateY(0) rotate(-6deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-55vh) rotate(6deg);
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(-5deg);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: min(90%, 900px);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    text-align: center;
+
+    padding: 35px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.22);
+
+    backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 0 40px rgba(255,0,160,.25),
+        inset 0 0 30px rgba(255,255,255,.04);
+
+    animation: contentIn 1s ease;
+}
+
+@keyframes contentIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h1 {
+    font-size: clamp(40px, 7vw, 75px);
+
+    background: linear-gradient(
+        90deg,
+        #ff65c3,
+        #ffd166,
+        white,
+        #ff65c3
+    );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: gradientText 4s linear infinite;
+}
+
+@keyframes gradientText {
+    to {
+        background-position: 300%;
+    }
+}
+
+.subtitle {
+    font-size: 24px;
+    color: #ffd9f2;
+    margin: 10px 0 20px;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #f8eaff;
+}
+
+/* =========================================================
+   SLIDE 1 - GIFT BOX
+========================================================= */
+
+.gift-area {
+    margin: 30px auto;
+    width: 220px;
+    height: 190px;
+    position: relative;
+    cursor: pointer;
+}
+
+.gift-box {
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background: #ff3d7f;
+    left: 20px;
+    bottom: 0;
+    border-radius: 8px;
+
+    box-shadow: 0 15px 35px rgba(255,0,120,.35);
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    left: 75px;
+    width: 30px;
+    height: 120px;
+    background: #ffd166;
+}
+
+.gift-lid {
+    position: absolute;
+    width: 205px;
+    height: 45px;
+    background: #ff5c93;
+    left: 7px;
+    top: 35px;
+    border-radius: 8px;
+
+    transition: 1s ease;
+}
+
+.gift-lid::after {
+    content: "";
+    position: absolute;
+    left: 87px;
+    width: 30px;
+    height: 45px;
+    background: #ffd166;
+}
+
+.gift-ribbon {
+    position: absolute;
+    left: 80px;
+    top: 0;
+    width: 60px;
+    height: 40px;
+}
+
+.gift-ribbon::before,
+.gift-ribbon::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 25px;
+    border: 7px solid #ffd166;
+    border-radius: 50%;
+}
+
+.gift-ribbon::before {
+    left: 0;
+    transform: rotate(25deg);
+}
+
+.gift-ribbon::after {
+    right: 0;
+    transform: rotate(-25deg);
+}
+
+.gift-area.open .gift-lid {
+    transform: translateY(-100px) rotate(-8deg);
+}
+
+.gift-area.open .gift-ribbon {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+.gift-message {
+    position: absolute;
+    width: 300px;
+    left: -40px;
+    top: -20px;
+
+    opacity: 0;
+    transform: scale(.5) translateY(50px);
+
+    transition: 1s ease;
+    color: #ffd166;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.gift-area.open .gift-message {
+    opacity: 1;
+    transform: scale(1) translateY(-90px);
+}
+
+/* =========================================================
+   SLIDE 2 - BIRTHDAY GIRL
+========================================================= */
+
+.girl-container {
+    margin: 25px auto;
+    width: 230px;
+    height: 230px;
+    position: relative;
+}
+
+.girl-photo {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 7px solid #ff9bd8;
+
+    box-shadow:
+        0 0 25px #ff4da6,
+        0 0 60px rgba(255,0,150,.4);
+
+    animation: girlFloat 3s ease-in-out infinite;
+}
+
+@keyframes girlFloat {
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+.crown {
+    position: absolute;
+    top: -25px;
+    left: 75px;
+    font-size: 55px;
+    animation: crownBounce 2s infinite;
+}
+
+@keyframes crownBounce {
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+/* =========================================================
+   SLIDE 3 - WISHES & PHOTOS
+========================================================= */
+
+.note {
+    margin: 20px auto;
+    max-width: 700px;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.08);
+
+    border-left: 4px solid #ff75c8;
+
+    text-align: left;
+
+    line-height: 1.8;
+}
+
+.note h2 {
+    text-align: center;
+    color: #ffd166;
+    margin-bottom: 10px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.memory-photo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    border: 3px solid rgba(255,255,255,.4);
+
+    transition: .4s;
+
+    animation: photoFloat 4s ease-in-out infinite;
+}
+
+.memory-photo:hover {
+    transform: scale(1.08) rotate(2deg);
+}
+
+@keyframes photoFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* =========================================================
+   SLIDE 4 - CAKE
+========================================================= */
+
+.cake-area {
+    margin: 30px auto;
+    width: 300px;
+    height: 260px;
+    position: relative;
+}
+
+.cake {
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    width: 230px;
+    height: 120px;
+}
+
+.cake-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 230px;
+    height: 80px;
+
+    background: linear-gradient(
+        #ff78b7,
+        #e83f86
+    );
+
+    border-radius: 10px 10px 25px 25px;
+
+    box-shadow: 0 15px 30px rgba(255,0,130,.3);
+}
+
+.cake-middle {
+    position: absolute;
+    bottom: 65px;
+    left: 15px;
+
+    width: 200px;
+    height: 65px;
+
+    background: #ffb6d9;
+
+    border-radius: 12px;
+}
+
+.icing {
+    position: absolute;
+    bottom: 105px;
+    left: 25px;
+
+    width: 180px;
+    height: 35px;
+
+    background: white;
+
+    border-radius: 20px 20px 12px 12px;
+}
+
+.candle {
+    position: absolute;
+    bottom: 130px;
+    left: 105px;
+
+    width: 20px;
+    height: 65px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #ffd166,
+        #ffd166 8px,
+        #ff5c8a 8px,
+        #ff5c8a 16px
+    );
+
+    border-radius: 5px;
+}
+
+.flame {
+    position: absolute;
+    left: 101px;
+    bottom: 195px;
+
+    width: 28px;
+    height: 38px;
+
+    background: #ffd166;
+
+    border-radius: 50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+
+    box-shadow: 0 0 25px #ff8c00;
+
+    animation: flame 0.7s infinite alternate;
+}
+
+@keyframes flame {
+    from {
+        transform: rotate(-45deg) scale(.9);
+    }
+
+    to {
+        transform: rotate(-45deg) scale(1.1);
+    }
+}
+
+/* Cake cutting animation */
+
+.knife {
+    position: absolute;
+
+    width: 150px;
+    height: 10px;
+
+    background: silver;
+
+    right: -40px;
+    top: 50px;
+
+    transform: rotate(55deg);
+
+    transform-origin: left center;
+
+    opacity: 0;
+
+    transition: 1s;
+}
+
+.cake-area.cut .knife {
+    opacity: 1;
+    animation: cutCake 1.5s ease forwards;
+}
+
+@keyframes cutCake {
+    0% {
+        transform: rotate(55deg) translateX(80px);
+    }
+
+    100% {
+        transform: rotate(100deg) translateX(-50px);
+    }
+}
+
+.cake-area.cut .flame {
+    animation: flameOff .5s forwards;
+}
+
+@keyframes flameOff {
+    to {
+        transform: rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-btn {
+    border: none;
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.15);
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.nav-btn:hover {
+    background: #ff4fa3;
+    transform: scale(1.05);
+}
+
+.dots {
+    display: flex;
+    gap: 7px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.35);
+}
+
+.dot.active {
+    background: #ff75c8;
+    box-shadow: 0 0 10px #ff75c8;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px) {
+
+    .content {
+        padding: 25px 18px;
+        width: 92%;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    .subtitle {
+        font-size: 19px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .memory-photo {
+        height: 130px;
+    }
+
+    .balloon {
+        width: 45px;
+        height: 60px;
+    }
+
+    .navigation {
+        bottom: 12px;
+    }
+
+    .nav-btn {
+        padding: 9px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+
+    <!-- =====================================================
+         COMMON BACKGROUND
+    ====================================================== -->
+
+    <div class="fireworks">
+
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+        <div class="firewall"></div>
+
+        <div class="firework fw1"></div>
+        <div class="firework fw2"></div>
+        <div class="firework fw3"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BALLOONS - PRESENT ON ALL SLIDES
+    ====================================================== -->
+
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+    <div class="balloon b5"></div>
+
+
+    <!-- =====================================================
+         SLIDE 1 - OPEN GIFT
+    ====================================================== -->
+
+    <section class="slide active">
+
+        <div class="content">
+
+            <h1>Hey Bestie! 💖</h1>
+
+            <p class="subtitle">
+                I have a special surprise for you...
+            </p>
+
+            <div
+                class="gift-area"
+                id="gift"
+                onclick="openGift()"
+            >
+
+                <div class="gift-message">
+                    🎉 HAPPY BIRTHDAY! 🎉
+                    <br>
+                    This little surprise is just for you! 💕
+                </div>
+
+                <div class="gift-ribbon"></div>
+
+                <div class="gift-lid"></div>
+
+                <div class="gift-box"></div>
+
+            </div>
+
+            <p class="text">
+                🎁 Click the gift box to open your surprise!
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 2 - BIRTHDAY GIRL
+    ====================================================== -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <h1>Our Birthday Girl 👑</h1>
+
+            <p class="subtitle">
+                Today is all about YOU! 💕
+            </p>
+
+            <div class="girl-container">
+
+                <div class="crown">👑</div>
+
+                <!-- REPLACE birthday-girl.jpg WITH YOUR PHOTO -->
+                <img
+                    src="birthday-girl.jpg"
+                    alt="Birthday Girl"
+                    class="girl-photo"
+                    onerror="this.src='https://via.placeholder.com/210x210/ff75c8/ffffff?text=Birthday+Girl'"
+                >
+
+            </div>
+
+            <p class="text">
+                ✨ Keep smiling, keep shining and keep
+                being the amazing person you are! ✨
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 3 - WISHES + NOTE + MEMORIES
+    ====================================================== -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <h1>Birthday Wishes 🎉</h1>
+
+            <p class="subtitle">
+                A little note from your best friend 💌
+            </p>
+
+            <div class="note">
+
+                <h2>💖 To My Best Friend</h2>
+
+                <p>
+                    Happy Birthday to one of the most special
+                    people in my life! 🥹❤️
+                    <br><br>
+
+                    Thank you for all the laughs, crazy
+                    conversations, unforgettable memories,
+                    and for always being there.
+                    <br><br>
+
+                    I hope this new chapter brings you
+                    happiness, success, love, adventure,
+                    and everything your heart wishes for.
+                    <br><br>
+
+                    No matter how much time passes,
+                    I hope we always stay this crazy,
+                    happy and unforgettable duo! 🫶
+                    <br><br>
+
+                    <strong>
+                        Happy Birthday, Bestie! 🎂💖
+                        Here's to many more beautiful
+                        memories together!
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <h2 style="color:#ffd166;margin-top:20px;">
+                📸 Our Memorable Moments
+            </h2>
+
+
+            <div class="photo-grid">
+
+                <!-- Replace these images with your memories -->
+
+                <img
+                    src="memory1.jpg"
+                    class="memory-photo"
+                    alt="Memory 1"
+                    onerror="this.src='https://via.placeholder.com/300x200/ff5c8a/ffffff?text=Memory+1'"
+                >
+
+                <img
+                    src="memory2.jpg"
+                    class="memory-photo"
+                    alt="Memory 2"
+                    onerror="this.src='https://via.placeholder.com/300x200/8e5cff/ffffff?text=Memory+2'"
+                >
+
+                <img
+                    src="memory3.jpg"
+                    class="memory-photo"
+                    alt="Memory 3"
+                    onerror="this.src='https://via.placeholder.com/300x200/ff9f43/ffffff?text=Memory+3'"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 4 - CAKE CUTTING
+    ====================================================== -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <h1>Let's Cut the Cake! 🎂</h1>
+
+            <p class="subtitle">
+                Make a wish... ✨
+            </p>
+
+
+            <div
+                class="cake-area"
+                id="cakeArea"
+                onclick="cutCake()"
+            >
+
+                <div class="cake">
+
+                    <div class="cake-bottom"></div>
+
+                    <div class="cake-middle"></div>
+
+                    <div class="icing"></div>
+
+                    <div class="candle"></div>
+
+                </div>
+
+                <div class="flame"></div>
+
+                <div class="knife"></div>
+
+            </div>
+
+
+            <p class="text">
+                🔪 Click the cake to cut it!
+            </p>
+
+            <p
+                id="cakeMessage"
+                style="
+                margin-top:20px;
+                color:#ffd166;
+                font-size:20px;
+                font-weight:bold;
+                opacity:0;
+                transition:1s;
+                "
+            >
+                🎉 YAY! Cake cutting time! 🎉
+                <br>
+                Happy Birthday, Bestie! ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<div class="navigation">
+
+    <button class="nav-btn" onclick="previousSlide()">
+        ❮
+    </button>
+
+    <div class="dots">
+
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+
+    </div>
+
+    <button class="nav-btn" onclick="nextSlide()">
+        ❯
+    </button>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SLIDE SYSTEM
+========================================================= */
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+let currentSlide = 0;
+
+function showSlide(index) {
+
+    if (index >= slides.length) {
+        index = 0;
+    }
+
+    if (index < 0) {
+        index = slides.length - 1;
+    }
+
+    currentSlide = index;
+
+    slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentSlide);
+    });
+
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+    });
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function previousSlide() {
+    showSlide(currentSlide - 1);
+}
+
+
+/* =========================================================
+   OPEN GIFT
+========================================================= */
+
+function openGift() {
+
+    const gift = document.getElementById("gift");
+
+    gift.classList.add("open");
+
+}
+
+
+/* =========================================================
+   CAKE CUTTING
+========================================================= */
+
+function cutCake() {
+
+    const cake = document.getElementById("cakeArea");
+    const message = document.getElementById("cakeMessage");
+
+    cake.classList.add("cut");
+
+    message.style.opacity = "1";
+
+}
+
+
+/* =========================================================
+   KEYBOARD NAVIGATION
+========================================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowRight") {
+        nextSlide();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousSlide();
+    }
+
+});
+
+
+/* =========================================================
+   SWIPE SUPPORT FOR MOBILE
+========================================================= */
+
+let touchStartX = 0;
+
+document.addEventListener("touchstart", function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function(e) {
+
+    let touchEndX = e.changedTouches[0].screenX;
+
+    if (touchEndX < touchStartX - 50) {
+        nextSlide();
+    }
+
+    if (touchEndX > touchStartX + 50) {
+        previousSlide();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
